@@ -3,15 +3,7 @@
 
 int main(void)
 {
-    int number;
-    float number2, divisao;
-
-    number2=5.0;
-    number=2;
-    
-    divisao= number2/ number;
-
-    printf("%.2f/%d= %.1f", number2, number, divisao);
+    puts("Olah, meu nome eh Frankley Kaiky!");
 
 
     return 0;

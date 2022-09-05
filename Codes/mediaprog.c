@@ -31,17 +31,17 @@ int main(void){
 
     if (media_geral>=9 && media_geral<=10){
         conceito= 'A';
-    }
-    else if(media_geral>=8 && media_geral<9){
+    } //&& media_geral<9
+    else if(media_geral>=8){
         conceito= 'B';
-    }
-    else if(media_geral>=7 && media_geral<8){
+    } //&& media_geral<8
+    else if(media_geral>=7){
         conceito= 'C';
-    }
-    else if(media_geral>=6 && media_geral<7){
+    } //&& media_geral<7
+    else if(media_geral>=6){
         conceito= 'D';
-    }
-    else if(media_geral>=5 && media_geral<6){
+    } //&& media_geral<6
+    else if(media_geral>=5){
         conceito= 'E';
     }
     else if(media_geral<5){

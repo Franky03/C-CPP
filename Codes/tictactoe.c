@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include <time.h>
+#include <time.h> 
 
 char board[3][3]; //Criando o tabuleiro, basicamente um array 2d (uma matriz).
 const char JOGADOR1= 'X'; //O Jogador 1 vai ser o X.
@@ -323,3 +323,5 @@ void printWinner(char winner)
         printf("EMPATE");
     }
 }
+
+//

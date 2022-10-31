@@ -49,13 +49,14 @@ int main(void){
         printf("Nao ha esse numero no array\n");
     }
     //Parte 5
-    
+    int indice=0;
     for(int i=0; i<10; i++){
        if(array[i]> maior){
         maior= array[i];
+        indice=i;
        }
     }
-    printf("Maior numero: %d\n", maior);
+    printf("Maior numero: %d no indice %d\n", maior, indice);
 
     return 0;
 }

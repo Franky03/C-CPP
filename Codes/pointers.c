@@ -100,5 +100,12 @@ int main(void){
 
     printf("%.1f %d", (float)*pi + 0.4 , (int)*po);
 
+    int *q;
+    int arr2[]= {1,2,3,4};
+
+    q= arr2;
+
+    printf("\n%d\n", *q);
+
     return 0;
 }

@@ -1,0 +1,6 @@
+Disciplina: Programacao
+Matricula	Nome			Nota 1		Nota 2		Nota 3		Rec		Media		Situacao
+01234		Ana Dias		8.0		9.0		8.5		 NaN 		 8.5		Aprovado
+01235		Carlos da Silva		8.0		8.0		8.0		 NaN 		 8.0		Aprovado
+01236		Joao Carlos		5.0		6.0		5.5		  6.0		5.7		Aprovado
+01237		Pedro Paulo		4.0		2.0		3.0		 NaN 		 3.0		Reprovado

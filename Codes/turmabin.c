@@ -137,15 +137,16 @@ int main(void){
 
     fclose(entrada);
 
-    saida= fopen("saida.txt", "w");
+    saida= fopen("saida.dat", "a+b");
 
-    fprintf(saida,"Disciplina: %s\n", disciplina);
+    fwrite(saida,"Disciplina: %s\n", disciplina);
     
     fprintf(saida, "Matricula\tNome\t\t\tNota 1\t\tNota 2\t\tNota 3\t\tRec\t\tMedia\t\tSituacao\n");
 
     ImprimeTurma(turma, max_alunos, saida);
 
     fclose(saida);
+
 
     return 0;
 }

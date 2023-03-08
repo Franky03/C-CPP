@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 typedef struct Ponto{
@@ -16,6 +17,7 @@ float calcule(const tPonto p1, const tPonto p2){
 int argmin(const float dists[], int t){
     float c_dist = dists[0];
     int min_idx = 0;
+
     for(int i=1; i<t; i++){
         if (dists[i] < c_dist){
             c_dist = dists[i];

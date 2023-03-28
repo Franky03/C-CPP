@@ -93,9 +93,25 @@ void ControleProduto::cadastraProduto2(std::string n,int q, double preco){
 }	
 
 void ControleProduto::cadastraProduto1(Produto p){
+	bool existe = false;
 	if(getIdx() < 10){
-		produtos[getIdx()] = new Produto(p);
-		increaseIdx();
+		for(auto i=0; i<getIdx(); i++){
+			if(produtos[i]->getName() == p.getName()){
+				int quant = produtos[i]->getQuant();
+				produtos[i]->setQuant(quant + p.getQuant());
+				if(produtos[i]->getPreco() != p.getPreco()){
+					produtos[i]->setPreco(p.getPreco());
+				}
+			existe = true;
+			break;
+			}
+		}
+
+		if(!existe){
+			produtos[getIdx()] = new Produto(p);
+			increaseIdx();
+		}
+		
 	}
 	else {
 		std::cerr << "No Space";
@@ -152,9 +168,9 @@ int main(void){
 	cp.cadastraProduto2("Macarrão", 10, 10.0);
 
 	cp.efetuaVenda("Arroz", 1);
-	std::cout << cp.getProdutos()[0]->getName() << std::endl;
-	cp.excluiProduto("Arroz");
-	std::cout << cp.getProdutos()[0]->getName() << std::endl;
+	std::cout << cp.getProdutos()[0]->getQuant() << std::endl;
+	cp.cadastraProduto2("Arroz", 15, 10.34);
+	std::cout << cp.getProdutos()[0]->getQuant() << std::endl;
 	
 	return 0;
 }	

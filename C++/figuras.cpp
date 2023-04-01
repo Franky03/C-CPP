@@ -10,8 +10,8 @@ class FiguraGeometrica {
     public:
         FiguraGeometrica(int tipo);
         FiguraGeometrica();
-        virtual float calculaArea();
-        virtual void lerAtributosArea();
+        virtual float calculaArea() = 0;
+        virtual void lerAtributosArea() = 0;
         std::string getNome();
 };
 
@@ -174,7 +174,7 @@ int main(void){
         cin >> typ;
         if(!typ) break;
         figs[typ-1]->lerAtributosArea();
-        cout << figs[typ-1]->getNome() << " de área " << figs[typ-1]->calculaArea() << endl;
+        cout << figs[typ-1]->getNome() << " polimórfico de área " << figs[typ-1]->calculaArea() << endl;
     }
 
 

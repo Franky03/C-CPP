@@ -1,6 +1,6 @@
-.global _start
+.global main
 .text
-_start:
+main:
     ldr r0, =n
     ldr r1, [r0]
     ldr r0, =s
@@ -77,7 +77,7 @@ factorial:
     cmp r0, #0          @ Compara o número (r0) com 0
     beq end_fac            @ Se o número é 0, termina a função
 loop:
-    mul r1, r1, r0      @ Multiplica o resultado pelo número
+    mul r1, r0, r1      @ Multiplica o resultado pelo número
     subs r0, r0, #1     @ Decrementa o número
     bne loop            @ Se o número não é 0, continua o loop
 end_fac:
@@ -108,7 +108,7 @@ divide_exit:
 
 
 .data
-n: .word 5
-s: .word 3
+n: .word 0
+s: .word 7
 COMB: .word 0
 string: .asciz "The combinatory is: %d\n"

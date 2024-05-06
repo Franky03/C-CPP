@@ -1,0 +1,1 @@
+arm-linux-gnueabihf-as questao74.s -o questao74.o && arm-linux-gnueabihf-gcc -static questao74.o -o q74 

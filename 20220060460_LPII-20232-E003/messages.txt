@@ -1,0 +1,12 @@
+SHOW
+mensagem
+mensagem
+SHOW
+SHOW
+SHOW
+SHOW 
+HALF
+HALT
+MENSAGEM GUARDANDO
+[A
+HALF

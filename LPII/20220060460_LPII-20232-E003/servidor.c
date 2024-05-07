@@ -1,30 +1,3 @@
-// O objetivo deste exercício é criar um servidor em C que controle o acesso a um 
-// arquivo de texto, armazenando todas as mensagens recebidas dos clientes. O 
-// servidor deve ser capaz de aceitar conexões de vários clientes simultaneamente, 
-// permitindo que eles enviem mensagens e solicitem a exibição do conteúdo do 
-// arquivo.
-
-// Requisitos:
-// 1. O servidor deve ser implementado em C/C++ usando PThreads e Sockets BSD.
-// 2. O servidor deve usar sockets do tipo stream (TCP) para comunicação com os 
-//    clientes.
-// 3. O servidor deve controlar o acesso exclusivo ao arquivo de texto usando 
-//    monitores.
-// 4. Os clientes devem ser capazes de enviar mensagens ao servidor, que serão 
-//    escritas no arquivo de texto.
-// 5. Quando um cliente enviar a mensagem "SHOW" para o servidor, este deve enviar
-//    de volta o conteúdo do arquivo para o cliente.
-// 6. O arquivo de texto deve armazenar todas as mensagens recebidas dos clientes.
-// 7. Quando 5 (cinco) clientes enviarem a mensagem "HALT" para o servidor, este 
-//    deve ser finalizado. 
-// 8. O servidor deve ser capaz de lidar com múltiplos clientes conectados 
-//    simultaneamente (máximo de 10 clientes).
-
-// Instruções:
-// 1. Implemente o servidor conforme os requisitos acima.
-// 2. Use telnet para os testes: se conectar ao servidor, enviar mensagens e solicitar a exibição do conteúdo do arquivo.
-// 3. Documente seu código de forma clara e concisa, explicando a lógica por trás de cada função e seção importante.
-
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
@@ -153,7 +126,7 @@ int main(void) {
         exit(EXIT_FAILURE);
     }
 
-    printf("Aguardando conexoes na porta: %d\n", PORT);
+    printf("Holding for connections on port %d\n", PORT);
 
     int client_counter = 0;
 
@@ -164,7 +137,7 @@ int main(void) {
             exit(EXIT_FAILURE);
         }
 
-        printf("Nova conexao recebida\n");
+        printf("New connection received !\n");
 
         iclients[client_counter].fd = client_fd[client_counter];
         iclients[client_counter].index = client_counter;
@@ -174,7 +147,7 @@ int main(void) {
 
         client_counter++;
         if (client_counter >= QTD_CLIENTS) {
-            printf("Limite de clientes atingido\n");
+            printf("Max clients reached\n");
             break;
         }
     }

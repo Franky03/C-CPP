@@ -50,6 +50,7 @@ typedef struct {
 } t_client_info;
 
 pthread_mutex_t file_mutex = PTHREAD_MUTEX_INITIALIZER;
+int halt_counter = 0;
 
 void write_to_file(const char* message){
 	FILE* file = fopen(FILENAME, "a");
@@ -90,13 +91,27 @@ void* handle_client(void* p) {
 			send(cli_info->fd, "GOODBYE!\n", 9, 0);
 			close(cli_info->fd);
 			cli_info->halt_received = 1; // Marca que o cliente enviou "HALT"
-
-			return 0;
+            halt_counter++;
+            printf("HALT counter: %d\n", halt_counter);
+            if (halt_counter >= 5){
+                printf("Closing server because 5 clients sent HALT\n");
+                pthread_mutex_unlock(&file_mutex);
+                // fecha todos os clientes e o servidor
+                for (int i = 0; i < QTD_CLIENTS; i++) {
+                    if (cli_info->halt_received == 0) {
+                        close(cli_info->fd);
+                    }
+                }
+                exit(EXIT_SUCCESS);
+            }
+            pthread_mutex_unlock(&file_mutex);
+			return NULL;
 
 		} else {
 			printf("[%d] Writing to file: %s", cli_info->index, buffer_read);
             write_to_file(buffer_read);
             strcpy(buffer_write, "Message received and written to file\n");
+            
 		}
 		pthread_mutex_unlock(&file_mutex);
 		send(cli_info->fd, buffer_write, strlen(buffer_write), 0);
@@ -141,7 +156,7 @@ int main(void) {
     printf("Aguardando conexoes na porta: %d\n", PORT);
 
     int client_counter = 0;
-	int halt_counter = 0;
+
     while (1) {
         client_fd[client_counter] = accept(server_fd, (struct sockaddr*) &client_sock_info, &client_sock_info_size);
         if (client_fd[client_counter] == -1) {
@@ -160,18 +175,6 @@ int main(void) {
         client_counter++;
         if (client_counter >= QTD_CLIENTS) {
             printf("Limite de clientes atingido\n");
-            break;
-        }
-
-		for (int i = 0; i < client_counter; ++i) {
-            if (iclients[i].halt_received) {
-                halt_counter++;
-                iclients[i].halt_received = 0;
-            }
-        }
-        // Se cinco clientes enviaram "HALT", finaliza o servidor
-        if (halt_counter == 5) {
-            printf("Cinco clientes enviaram HALT. Finalizando o servidor.\n");
             break;
         }
     }

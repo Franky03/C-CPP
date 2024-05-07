@@ -1,12 +1,19 @@
-SHOW
-mensagem
-mensagem
-SHOW
-SHOW
-SHOW
-SHOW 
-HALF
-HALT
-MENSAGEM GUARDANDO
-[A
-HALF
+hello from 1
+hello from 2
+
+
+HELLO FROM 1 AGAIN
+HELLO
+HELLO FROM 3 
+HELLO
+HELLO 
+HELLO
+
+
+
+
+
+
+
+IAEE
+HELLO 
